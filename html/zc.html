@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/ajax.js"></script>
+</head>
+<body>
+账号<input type="text" id="user">
+密码<input type="text" id="pass">
+<button id="zc">注册</button>
+<button id="denglu">登录</button>
+<script>
+    zc.onclick = function(){
+        ajax({
+            url:'http://localhost:5555',
+            type:'post',
+            data:{
+                user:user.value,
+                pass:pass.value
+            },
+            success:function(data){
+                console.log(data)
+            },
+            error:function(){
+                console.log('服务器错误')
+            }
+        })
+    }
+
+    denglu.onclick = function(){
+        ajax({
+            url:'http://localhost:4444',
+            type:'post',
+            data:{
+                user:user.value,
+                pass:pass.value
+            },
+            success:function(data){
+               if(data=="登录成功"){
+                   window.location="wenzhang.html"
+               }
+            },
+            error:function(){
+                console.log('服务器错误')
+            }
+        })
+    }
+
+</script>
+</body>
+</html>
